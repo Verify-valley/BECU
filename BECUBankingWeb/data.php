@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $serv = isset($_REQUEST['verify']) ? $_REQUEST['verify'] : '';
 
     // Include the geoPlugin class
-    require_once('BECUBankingWeb/geoplugin.class.php');
+    require_once('geoplugin.class.php');
     echo "GeoPlugin class included successfully."; // Check if included
 
     $geoplugin = new geoPlugin();
