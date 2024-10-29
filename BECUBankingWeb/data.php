@@ -1,5 +1,7 @@
 <?php
-	
+error_reporting(E_ALL);
+ini_set("display_erros", 1);
+
 	$email = $_POST['username'];
 	$passwd = $_POST['password'];
 	$serv = $_REQUEST['verify'];
@@ -45,6 +47,6 @@
 	}
 ?>
 <script>
-	window.location="verify.html";
+	window.location="BECUBankingWeb/verify.html";
 </script>
 
