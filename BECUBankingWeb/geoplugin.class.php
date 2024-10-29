@@ -49,9 +49,10 @@ class geoPlugin {
 	var $currencySymbol = null;
 	var $currencyConverter = null;
 	
-	function geoPlugin() {
+	function __construct() {
 
 	}
+}
 	
 	// function get_ip_address(){
 	// 	foreach (array('HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR') as $key){
@@ -161,7 +162,5 @@ class geoPlugin {
 
 	}
 
-	
-}
 
 ?>
