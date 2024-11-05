@@ -1,0 +1,1 @@
+(function($){$.fn.vAlign=function(value){var defaultValue="top",valueList="baseline,top,bottom,middle";if(!value||!(new RegExp(value,"i")).test(valueList))value=defaultValue;return $.each(this,function(){$(this).html('<table style="width:100%; height:100%;"><tr><td valign="'+value+'">'+$(this).html()+"</td></tr></table>")})}})(jQuery)

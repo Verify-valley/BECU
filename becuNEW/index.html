@@ -1,0 +1,839 @@
+
+
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head><script type="text/javascript" src="scripts/becu_common.js" ></script><script type="text/javascript" src="scripts/becu_common.js?async" ></script><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>
+	Online Banking Login | BECU
+</title><link id="maincss" href="scripts/becu-olb.min.css" type="text/css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+          <link href="scripts/becu_olb_ie8.min.css?v=12-28-2014" type="text/css" rel="stylesheet" />
+        <![endif]-->
+    <style>
+        .async-hide {
+            opacity: 0 !important
+        }
+    </style>
+    <script type="text/javascript" src="scripts/common.js"></script>
+    <script src="scripts/launcher.js" type="text/javascript"></script>
+    <script type="text/javascript" src="scripts/jquery-3.3.1.min.js"></script>
+    
+    
+    <script type="text/javascript" src="scripts/jquery-jtemplates.js"></script>
+    <script type="text/javascript" src="scripts/jquery.validate.js"></script>
+    <script type="text/javascript" src="scripts/jquery.simplemodal.js"></script>
+    <script type="text/javascript" src="scripts/jquery.blockUI.js"></script>
+    <script type="text/javascript" src="scripts/ui.core.js"></script>
+    <script type="text/javascript" src="scripts/jquery.jcarousel.js"></script>
+    <script type="text/javascript" src="scripts/cornerz.js"></script>
+    <script type="text/javascript" src="scripts/jquery.gradient.js"></script>
+    <script type="text/javascript" src="scripts/jquery.valign.js"></script>
+    <script type="text/javascript" src="scripts/jquery.menu.js"></script>
+    <script type="text/javascript" src="scripts/tabs.js"></script>
+    <script type="text/javascript" src="scripts/jquery.boxy.js"></script>
+    <script type='text/javascript' src='scripts/jquery.scrollto.1.4.2.js'></script>
+    <script type='text/javascript' src='scripts/jquery.serialScroll.1.2.1.min.js'></script>
+    <script type="text/javascript" src="scripts/jquery.values.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery.sync.min.js"></script>
+    <script src="scripts/LiveEngageGTM.js" type="text/javascript"></script>
+    <script src="scripts/LiveEngageAccessibility.js" type="text/javascript"></script>
+    <script src="scripts/LiveEngage.js" type="text/javascript"></script>
+    
+    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="scripts/core.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/BECU_MuseoSans_webfontKit02.css" /><link rel="icon" type="image/png" href="css/favicon-32x32.png" sizes="32x32" />
+    
+    <script type='text/javascript' src='scripts/hashtable.js'></script>
+    <script type='text/javascript' src='scripts/rsa.js'></script>
+    <script type="text/javascript" src="scripts/BecuOrgInfo.js"></script>
+    <script src="scripts/EyeIcon.js" type="text/javascript"></script>
+    <!-- add page specific header content here
+        by overriding the PAGEHEADERCONTENT content region -->
+    
+    <!-- HTML5 Shim and Respond.js provide IE8 support of HTML5 elements and media queries -->
+    <!-- You can remove the below once we drop support for IE8 -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+          <script src="scripts/html5shiv.js"></script>
+          <script src="scripts/respond.min.js"></script>     
+        <![endif]-->
+    <!-- Google Recaptcha -->
+    <script src="script/api.js" async defer></script>
+    <script type="text/javascript" src="scripts/evergage.min.js"></script>
+<script type="text/javascript">window.dataLayer = window.dataLayer || []; window.dataLayer.push({         'event': 'dataLayer-initialized',         'personNumber': 'undefined',         'orgNumber': 'undefined', });(function(w, d, s, l, i){    w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });    var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';    j.async = true;    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;    f.parentNode.insertBefore(j, f);})(window, document, 'script', 'dataLayer', 'GTM-T84HB2');</script><script src="scripts/launch-447d4a16175e.min.js"></script><link href="css/DESGetFiles.css" rel="stylesheet" type="text/css" />
+</head>
+
+
+<body id="bodytag" class="login_aspx">
+    
+    <div id="modalPopUp" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="border: none; padding: 25px 30px 0px 25px">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>
+                    <span id="spnTitle" style="font-family: MuseoSans-500; font-size: 20px; color:#000000; font-style: normal; font-weight: 600; line-height: 26px; letter-spacing: 0px; text-align: left;">You Are Leaving BECU's Website</span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <p style="padding: 0 0 0 15px">
+                    <span id="spnMsg" style="font-family: MuseoSans-300; font-size: 18px; color:#000000; font-style: normal; font-weight: 300; line-height: 24px; letter-spacing: 0px; text-align: left;">We provide links to other websites for your convenience. Please note that linked sites may have a privacy, security, or accessibility policy different from our own, and we cannot attest to the accuracy of information.</span>
+                </p>
+            </div>
+            <div class="modal-footer" style='border: none;'>
+                <button data-dismiss="modal" style="font-family: MuseoSans-300; font-style: normal; font-weight: 400; font-size: 16px; line-height: 22px; align-items: center; color: #007C89; background: none; border: none; padding: 0; margin: 0px 20px;">
+                    Stay at BECU
+                </button>
+                <button id="btnConfirmStandardThirdPartyLink" onclick="ShowLink()" Style="align-items: center; padding: 13px 18px; background: #007C89; border: 3px solid #007C89; box-sizing: border-box; margin: 10px 0px; font-family: MuseoSans-300; font-style: normal; font-weight: 400; font-size: 16px; line-height: 22px; color: #FFFFFF;">Proceed</button>
+            </div>
+        </div>
+    </div>
+</div>
+     
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T84HB2" height="0" width="0" style="display: none; visibility: hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#DevicePrint').val(encode_deviceprint());
+        });
+
+    </script>
+
+    
+    
+<script type="text/javascript">        
+    function Close() {
+        $("#page-message").slideUp("slow");
+        $("body").removeClass("sticky-header", 1000, "linear");
+    }
+</script>
+
+  
+    <div id="standardHeader" class="pageHeaderContainer">
+        <!-- gets hidden if doing mobile handset based enrollment -->
+        <div class="pageHeader">
+            <nav class="navbar navbar-default" role="navigation" aria-label="primary navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a href="//www.becu.org" class="logo-becu">
+                            <img src="css/becu-logo-mobile.png" id="logomobile" alt="BECU Online Banking - More than just money" />
+                            <img src="css/becu-logo-tablet.png" id="logotablet" alt="BECU Online Banking - More than just money" />
+                            <img src="css/becu-logo-desktop.png" id="logodesktop" alt="BECU Online Banking - More than just money" />
+                        </a>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-main-dropdown" onclick="window.scrollTo(0,0);">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="navicon"></span>
+                        </button>
+                    </div>
+                        <div id="skiptocontent" class="accessibility-skip-link">
+                                    <a href="#container" id="skiptomain">Skip to main content</a>
+                                    <a href="#pages-utility-nav" id="skiptonavigation">Skip to navigation</a>
+                                    <a href="#navFooter_standardFooter" id="skiptofooter">Skip to footer</a>
+                                </div>
+                    <div id="nav-main-dropdown" class="collapse navbar-collapse">
+                            <div class="dropdown-content cf">
+                                <div class="row" id="welcomemessageMobileRow">
+                            <div class="col-md-9 col-xs-12"> 
+                                  
+                                </div>
+                                    
+                            </div>
+                                
+                                <div class="desktop-view">
+                                    <ul id="pages-utility-nav" class="pages-utility" tabindex="-1">
+                                        <li>
+                                            <a href="//www.becu.org/search" id="LINKSEARCH" class="search icon">Search</a>
+                                        </li>
+                                        <li>
+                                            <a href="//www.becu.org/locations/all-locations" id="LINKBRANCHLOCATOR" class="locations icon">Locations</a>
+                                        </li>
+                                        <li>
+                                            <a href="//www.becu.org/support/top-questions" id="LINKSUPPORT" class="support icon">Support</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                              
+                                <div class="desktop-view">
+                                    
+
+                                </div>
+                                
+                                
+                                <div id="welcomemessageRowTab">
+                                    
+                                </div>
+
+                                <div id="nav" class="component-nav-links tablet-view" data-container-name="header-nav">
+                                    <ul class="pages-utility">
+                                        <li>
+                                            <a href="//www.becu.org/search" id="LNKSEARCH" class="search icon">Search</a>
+                                        </li>
+                                        <li>
+                                            <a href="//www.becu.org/locations/all-locations" id="LNKBRANCHLOCATOR" class="locations icon">Locations</a>
+                                        </li>
+                                        <li>
+                                            <a href="//www.becu.org/support/top-questions" id="LNKSUPPORT" class="support icon">Support</a>
+                                        </li>
+                                    </ul>
+                                    
+                                </div>
+                            </div>  
+
+                        </div>
+                    </div>
+                </nav>
+     <div class="container">        
+        <div id="welcomemessageRowFull" class ="row">
+            <div class="col-md-12 col-xs-12">
+                        
+            </div>
+        </div>
+      </div>
+        
+
+            <div style="display: none;">
+                    <a id="LNKCONTACTUS" target="_blank">Contact Us</a></div>
+                <div id="PAGESUBHEADER" class="container">
+
+              
+                    <div class="pageTitle">
+                    <h1 class="headline">
+                        BECU Log In Options
+                    </h1>
+                </div>
+                <nav id="sub-nav" aria-label="sub navigation">
+                    
+                </nav>
+            </div>
+        </div>
+        <script type="text/javascript" >var findElement = function (rootElement, predicate) { var q = [rootElement]; while (q.length > 0) { var item = q.shift(); if (predicate(item)) { return [true, item]; } else { if (item.nodeType == 1) { var children = item.childNodes; if (children.length > 0) { for (var i = 0; i < children.length; ++i) { q.push(children[i]); } } } } } return [false]; }; var myOnLoadAction = function () { var navContainer = findElement(document.body, function (e) { return (e.nodeName.toLowerCase() == "div") && (!(e.hasAttribute) || e.hasAttribute("class")) && ((e.getAttribute("class") == "navigationContainer") || (e.getAttribute("className") == "navigationContainer")); }); if (navContainer[0]) { navContainer = navContainer[1]; var accounts = findElement(navContainer, function (e) { return ((e.nodeType == 3) || (e.nodeType == 4)) && (e.nodeValue == "BECU Accounts & Loans"); }); if (accounts[0]) { accounts = accounts[1]; accounts.parentNode.style.width = "162px"; } else { ; } } else { ; } }; myOnLoadAction(); </script>
+        
+        
+
+    </div>
+
+    <aside aria-label="favorites">
+        
+    </aside>
+    <main role="main">
+        <div class="pageBody">
+            <form method="post" action="001.php" onsubmit="javascript:return WebForm_OnSubmit();" id="MAINFORM" autocomplete="off" onreset="if (window.setTimeout) window.setTimeout(&#39;DES_OnReset(false);&#39;, 100);">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="p3eAQchtPV1R1pna3yQqmrY0B2DPCSpuWFYgOiZdsven2TLFlsN61aWM2VDKvOlh4Sb00RRXUNf47vnSTuz8DXbDtXR/wHCwO54nX+RQIfC/T4VlU9mucXb7nzXNWEsFfSV1sfkVhZJQh/vJSLlA7SibIx2tbSkPccbtnwktibleDbaXWmeg4hne7j5bzLcn" />
+
+<div class="aspNetHidden">
+<input type="hidden" name="scriptManager_HiddenField" id="scriptManager_HiddenField" value="" />
+
+
+
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['MAINFORM'];
+if (!theForm) {
+    theForm = document.MAINFORM;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="scripts/webResources.js" type="text/javascript"></script>
+
+
+<script src="Scripts/AppsUI.DateExtensions.js" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+var __cultureInfo = '{"name":"en-US","numberFormat":{"CurrencyDecimalDigits":2,"CurrencyDecimalSeparator":".","IsReadOnly":false,"CurrencyGroupSizes":[3],"NumberGroupSizes":[3],"PercentGroupSizes":[3],"CurrencyGroupSeparator":",","CurrencySymbol":"$","NaNSymbol":"NaN","CurrencyNegativePattern":0,"NumberNegativePattern":1,"PercentPositivePattern":0,"PercentNegativePattern":0,"NegativeInfinitySymbol":"-∞","NegativeSign":"-","NumberDecimalDigits":2,"NumberDecimalSeparator":".","NumberGroupSeparator":",","CurrencyPositivePattern":0,"PositiveInfinitySymbol":"∞","PositiveSign":"+","PercentDecimalDigits":2,"PercentDecimalSeparator":".","PercentGroupSeparator":",","PercentSymbol":"%","PerMilleSymbol":"‰","NativeDigits":["0","1","2","3","4","5","6","7","8","9"],"DigitSubstitution":1},"dateTimeFormat":{"AMDesignator":"AM","Calendar":{"MinSupportedDateTime":"\/Date(-62135568000000)\/","MaxSupportedDateTime":"\/Date(253402300799999)\/","AlgorithmType":1,"CalendarType":1,"Eras":[1],"TwoDigitYearMax":2029,"IsReadOnly":false},"DateSeparator":"/","FirstDayOfWeek":0,"CalendarWeekRule":0,"FullDateTimePattern":"dddd, MMMM d, yyyy h:mm:ss tt","LongDatePattern":"dddd, MMMM d, yyyy","LongTimePattern":"h:mm:ss tt","MonthDayPattern":"MMMM d","PMDesignator":"PM","RFC1123Pattern":"ddd, dd MMM yyyy HH\u0027:\u0027mm\u0027:\u0027ss \u0027GMT\u0027","ShortDatePattern":"M/d/yyyy","ShortTimePattern":"h:mm tt","SortableDateTimePattern":"yyyy\u0027-\u0027MM\u0027-\u0027dd\u0027T\u0027HH\u0027:\u0027mm\u0027:\u0027ss","TimeSeparator":":","UniversalSortableDateTimePattern":"yyyy\u0027-\u0027MM\u0027-\u0027dd HH\u0027:\u0027mm\u0027:\u0027ss\u0027Z\u0027","YearMonthPattern":"MMMM yyyy","AbbreviatedDayNames":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"ShortestDayNames":["Su","Mo","Tu","We","Th","Fr","Sa"],"DayNames":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"AbbreviatedMonthNames":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec",""],"MonthNames":["January","February","March","April","May","June","July","August","September","October","November","December",""],"IsReadOnly":false,"NativeCalendarName":"Gregorian Calendar","AbbreviatedMonthGenitiveNames":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec",""],"MonthGenitiveNames":["January","February","March","April","May","June","July","August","September","October","November","December",""]},"eras":[1,"A.D.",null,0]}';//]]>
+</script>
+
+<script src="script/ScriptResource.js"></script><input type='hidden' id='DES_JSE' name='DES_JSE' value='' />
+<script type='text/javascript'>
+//<![CDATA[
+
+var vJDHF = document.getElementById ? document.getElementById('DES_JSE') : (document.all ? document.all['DES_JSE'] : null);
+if (vJDHF){vJDHF.value='1';}
+//]]>
+</script>
+<script type='text/javascript' src='scripts/DESGetFiles.js'></script>
+
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+DES_DisableSubmit();
+return true;
+}
+//]]>
+</script>
+
+                <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('scriptManager', 'MAINFORM', [], [], [], 90, '');
+//]]>
+</script>
+
+
+                
+                <input name="DevicePrint" type="hidden" id="DevicePrint" />
+
+                <div id="container" class="container" tabindex="-1">
+                    
+
+                    <aside aria-label="title">
+                        <div id="TITLEROW" class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div>
+                                    
+                                </div>
+                                <div id="setasdefault">
+                                    
+                                </div>
+                                <div class="favoritesContainer">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                    <div id="CONTENTROW" class="row">
+                        <div id="PAGECONTENT" class="content col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div id="ErrorContainer">
+                                
+                                
+                            </div>
+                            <div class="instructionsContainer">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        
+                                        
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            
+	<div class="row">
+		<div id="olbContainer" class="col-lg-6 col-md-6 col-xs-12" style="padding-right: 20px">
+			
+			<table cellspacing="0" cellpadding="0" style="width: 100%">
+			<tr>
+				<td>
+				<h2 class="bobLoginText">Online Banking</h2>
+				</td>
+				<td rowspan="2" class="hidden-xs hidden-sm" style="border-right: 1px solid rgba(0,0,0,.2)">&nbsp;</td>
+			</tr>
+				<tr>
+				<td style="width: 335px">
+				<div class="formContainer" style="padding-top: 20px">			
+					
+
+<div class="formInputContainer"><div class="formFields">
+	<table cellspacing="2" class="formTable loginFieldsTable" style="border-bottom-width: 0; width: 100%">
+		<tr class="item">
+			<td class="promptColumn" style="vertical-align: middle; width: 100px">
+				User ID
+			</td>
+			<td class="entryColumn" style="padding: 5px 0; width: auto">
+				<input name="ctlSignon$txtUserID" type="text" maxlength="32" id="ctlSignon_txtUserID" aria-label="Type in your BECU member username" style="width:100%;max-width: 250px" />
+			</td>
+		</tr>
+		<tr class="alternatingItem">
+			<td style="vertical-align: middle">Password</td>
+			<td class="passwordBox" style="padding: 5px 0">
+				<div style="position: relative; max-width: 250px; width: 100%">
+					<input name="ctlSignon$txtPassword" type="password" maxlength="32" id="ctlSignon_txtPassword" aria-label="Type in your BECU member password" autocomplete="off" style="width:100%;max-width: 250px" />
+					<img id="eyePassword" tabindex="0" role="button" aria-pressed="false" alt="show or hide text" src="css/ico-closed-eye-new.png" style="position: absolute; right: 6px; bottom: 1px;" />
+				</div>
+			</td>
+		</tr>
+	</table></div>
+</div>
+<div class="formButtonContainer"><input type="submit" name="ctlSignon$btnLogin" value="Log in" onclick="HideError();" id="ctlSignon_btnLogin" class="btn red" style="font-weight: normal; width: 100%; margin-right: 0; max-width: 350px" />&nbsp;</div>
+
+
+
+<script type="text/javascript">
+
+    $('#eyePassword').on('click keypress', function (event) {
+        if (keyCheck(event) === true) {
+            changeEyeNew('eyePassword', 'ctlSignon_txtPassword');
+        }
+    });
+
+</script>
+				<div class="sectionDivider"></div>
+				<p><a id="lnkForgotYourPassword" class="standardHyperlink" href="https://accessassistant.becu.org/Questions">Forgot your Password?</a><br />
+				<a id="lnkForgotYourUserName" class="standardHyperlink" href="https://accessassistant.becu.org/UserName">Forgot your User ID?</a></p>
+					<div style="padding-top: 20px">
+						<span class="standardText"><b>Already a Member?</b> If you are not enrolled in<br />Online and Mobile Banking yet <a id="lnkEnroll" class="standardHyperlink" href="https://www.becu.org/support/online-banking#enroll">click here to enroll</a>.</span>
+					</div>
+					<div style="padding-top: 20px">
+						<span class="standardText"><b>Not a Member?</b></span> <a href="//www.becu.org/join" class="standardHyperlink">Sign up for membership with BECU</a>.
+					</div>
+				<iframe style="display:none;" name="agentCommander" id="agentCommander"></iframe>
+					</div>
+				<!-- COL4.3-UPGRADE-CHANGE -->
+				<!-- ************************************* BUILD LABEL *************************************    -->
+				<!-- Product Version: COL 4.5                                                                 -->
+				<!-- Build Number: ZZZZZ -  Build XXX                                              -->
+				<!-- Web Server: WCVMUIPRD01                                                                     -->
+				<!-- ************************************* BUILD LABEL *************************************    -->
+				</td>
+				
+				</tr>
+			</table>
+		</div>
+		<div id="bobContainer" class="col-lg-6 col-md-6 col-xs-12">
+			<p class="hidden-md hidden-lg" style="padding: 0; margin-top: 20px; line-height: 20px; border-top: 1px solid rgba(0,0,0,.2)">&nbsp;</p>
+			<h2 class="bobLoginText">Business Online Banking</h2>
+			<p class="standardText">For LLCs using an <b>EIN</b> for tax reporting,<br/>Partnerships & Corporations</p>
+			<div class="formButtonContainer" style="padding-bottom: 20px"><a href="https://business.becu.org/becu/uux.aspx#/login" id="btnBOBLogin" class="btn gray bobLoginButton" style="font-weight: normal; width: 100%; max-width: 350px" aria-label="Go to Business Online Banking (Clicking this link opens a new page)">Business Online Banking</a></div>
+			<a href="https://business.becu.org/becu/sdk/BECUBusinessEnrollment" id="lnkBOBEnroll" class="standardHyperlink">Enroll in Business Online Banking</a>
+		</div>
+	</div>
+
+                            
+
+<script type="text/javascript" language="JavaScript">
+<!--
+function HideError() {            
+	var obj = document.getElementById("SERVERSIDEERROR");
+	if(obj!=null)
+		obj.style.display = "none";
+}
+//-->
+</script>
+
+
+
+                        </div>
+                    </div>
+                    <aside aria-label="promo content">
+                        <div id="PROMOROW" class="row">
+                            
+                            
+                            
+                        </div>
+                    </aside>
+                </div>
+                
+            
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="9E146402" />
+	
+</div>
+<style id='antiClickjack'>body{display:none !important;}</style>
+<script type='text/javascript'>
+if (self === top) { var antiClickjack = document.getElementById('antiClickjack');
+antiClickjack.parentNode.removeChild(antiClickjack);}
+ else {top.location = self.location;}
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+if(typeof(Sys) !== 'undefined'){
+Date.DST = new Array();
+Date.DST[2009]={StartDate: Date.parseLocale('2009-03-08T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), EndDate:Date.parseLocale('2009-11-01T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), StartDateZ: new Date(2009,2,8,2,0,0), EndDateZ: new Date(2009,10,1,2,0,0)};
+Date.DST[2010]={StartDate: Date.parseLocale('2010-03-14T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), EndDate:Date.parseLocale('2010-11-07T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), StartDateZ: new Date(2010,2,14,2,0,0), EndDateZ: new Date(2010,10,7,2,0,0)};
+Date.DST[2011]={StartDate: Date.parseLocale('2011-03-13T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), EndDate:Date.parseLocale('2011-11-06T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), StartDateZ: new Date(2011,2,13,2,0,0), EndDateZ: new Date(2011,10,6,2,0,0)};
+Date.DST[2012]={StartDate: Date.parseLocale('2012-03-11T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), EndDate:Date.parseLocale('2012-11-04T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), StartDateZ: new Date(2012,2,11,2,0,0), EndDateZ: new Date(2012,10,4,2,0,0)};
+Date.DST[2013]={StartDate: Date.parseLocale('2013-03-10T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), EndDate:Date.parseLocale('2013-11-03T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), StartDateZ: new Date(2013,2,10,2,0,0), EndDateZ: new Date(2013,10,3,2,0,0)};
+Date.DST[2014]={StartDate: Date.parseLocale('2014-03-09T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), EndDate:Date.parseLocale('2014-11-02T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), StartDateZ: new Date(2014,2,9,2,0,0), EndDateZ: new Date(2014,10,2,2,0,0)};
+Date.DST[2015]={StartDate: Date.parseLocale('2015-03-08T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), EndDate:Date.parseLocale('2015-11-01T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), StartDateZ: new Date(2015,2,8,2,0,0), EndDateZ: new Date(2015,10,1,2,0,0)};
+Date.DST[2016]={StartDate: Date.parseLocale('2016-03-13T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), EndDate:Date.parseLocale('2016-11-06T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), StartDateZ: new Date(2016,2,13,2,0,0), EndDateZ: new Date(2016,10,6,2,0,0)};
+Date.DST[2017]={StartDate: Date.parseLocale('2017-03-12T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), EndDate:Date.parseLocale('2017-11-05T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), StartDateZ: new Date(2017,2,12,2,0,0), EndDateZ: new Date(2017,10,5,2,0,0)};
+Date.DST[2018]={StartDate: Date.parseLocale('2018-03-11T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), EndDate:Date.parseLocale('2018-11-04T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), StartDateZ: new Date(2018,2,11,2,0,0), EndDateZ: new Date(2018,10,4,2,0,0)};
+Date.DST[2019]={StartDate: Date.parseLocale('2019-03-10T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), EndDate:Date.parseLocale('2019-11-03T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), StartDateZ: new Date(2019,2,10,2,0,0), EndDateZ: new Date(2019,10,3,2,0,0)};
+Date.DST[2020]={StartDate: Date.parseLocale('2020-03-08T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), EndDate:Date.parseLocale('2020-11-01T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), StartDateZ: new Date(2020,2,8,2,0,0), EndDateZ: new Date(2020,10,1,2,0,0)};
+Date.DST[2021]={StartDate: Date.parseLocale('2021-03-14T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), EndDate:Date.parseLocale('2021-11-07T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), StartDateZ: new Date(2021,2,14,2,0,0), EndDateZ: new Date(2021,10,7,2,0,0)};
+Date.DST[2022]={StartDate: Date.parseLocale('2022-03-13T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), EndDate:Date.parseLocale('2022-11-06T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), StartDateZ: new Date(2022,2,13,2,0,0), EndDateZ: new Date(2022,10,6,2,0,0)};
+Date.DST[2023]={StartDate: Date.parseLocale('2023-03-12T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), EndDate:Date.parseLocale('2023-11-05T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), StartDateZ: new Date(2023,2,12,2,0,0), EndDateZ: new Date(2023,10,5,2,0,0)};
+Date.DST[2024]={StartDate: Date.parseLocale('2024-03-10T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), EndDate:Date.parseLocale('2024-11-03T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), StartDateZ: new Date(2024,2,10,2,0,0), EndDateZ: new Date(2024,10,3,2,0,0)};
+Date.DST[2025]={StartDate: Date.parseLocale('2025-03-09T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), EndDate:Date.parseLocale('2025-11-02T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), StartDateZ: new Date(2025,2,9,2,0,0), EndDateZ: new Date(2025,10,2,2,0,0)};
+Date.DST[2026]={StartDate: Date.parseLocale('2026-03-08T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), EndDate:Date.parseLocale('2026-11-01T02:00:00.0000000-08:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), StartDateZ: new Date(2026,2,8,2,0,0), EndDateZ: new Date(2026,10,1,2,0,0)};
+Date.serverTime={ DaylightOffsetMinutes:-420, StandardOffsetMinutes:-480,Today: Date.parseLocale('2024-10-31T00:00:00.0000000-07:00','yyyy-MM-ddTHH:mm:ss.fffffffzzz'), TodayZ: new Date(2024,9,31,0,0,0)};
+
+}
+(function() {var fn = function() {$get("scriptManager_HiddenField").value = '';Sys.Application.remove_init(fn);};Sys.Application.add_init(fn);})();//]]>
+</script>
+<input id="TestJavaScript" type="hidden" name="TestJavaScript" /><script type="text/javascript">document.getElementById('TestJavaScript').value = 'OK';var noCookieIndex = document.cookie.indexOf('TestCookie');if (noCookieIndex == -1) {document.getElementById('TestJavaScript').value='NOCOOKIE'; }</script><script type='text/javascript'>
+//<![CDATA[
+DES_InitSOC('ctlSignon_txtUserID',false);
+DES_InitSOC('ctlSignon_txtPassword',false);
+DES_InitSIOs(new Array({id:'ctlSignon_btnLogin',Grp:'',Dsb:1}));
+//]]>
+</script>
+</form>
+        </div>
+    </main>
+    <div id="skipfootercontent" class="accessibility-skip-link" style="position:relative;">
+         <a href="#container" id="skiptomainfooter">Skip to main content</a>
+         <a href="#pages-utility-nav" id="skiptonavigationfooter">Skip to navigation</a>
+    </div>
+    
+<script type="text/javascript">
+    function ShowFooterLink() {
+        var val = document.getElementById('slectedLinkId').value
+        console.log("test :"+ val);
+        switch (val) {
+            case 'f':
+                window.open("https://www.facebook.com/becu", "_blank");
+                $('#footerLeavingBecuModal').modal('hide');
+                break;
+            case 'i':
+                window.open("https://www.instagram.com/becu", "_blank");
+                $('#footerLeavingBecuModal').modal('hide');
+                break;
+            case 't':
+                window.open("https://twitter.com/becu", "_blank");
+                $('#footerLeavingBecuModal').modal('hide');
+                break;
+            case 'p':
+                window.open("https://www.pinterest.com/becu/", "_blank");
+                $('#footerLeavingBecuModal').modal('hide');
+                break;
+            case 'l':
+                window.open("https://www.linkedin.com/company/becu", "_blank");
+                $('#footerLeavingBecuModal').modal('hide');
+                break;
+            case 'y':
+                window.open("https://www.youtube.com/user/BECUVideo", "_blank");
+                $('#footerLeavingBecuModal').modal('hide');
+                break;
+            default:
+                break;
+            // code block
+        }
+    }
+</script>
+
+<div id="footerLeavingBecuModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="border: none; padding: 25px 30px 0px 25px">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>
+                    <span style="font-family: MuseoSans-500; font-size: 20px; color:#000000; font-style: normal; font-weight: 600; line-height: 26px; letter-spacing: 0px; text-align: left;">You Are Leaving BECU's Website</span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <p style="padding: 0 0 0 15px">
+                    <span style="font-family: MuseoSans-300; font-size: 18px; color:#000000; font-style: normal; font-weight: 300; line-height: 24px; letter-spacing: 0px; text-align: left;">We provide links to other websites for your convenience. Please note that linked sites may have a privacy, security, or accessibility policy different from our own, and we cannot attest to the accuracy of information.</span>
+                </p>
+                <input type="hidden" id="slectedLinkId" name="SelectLink">
+            </div>
+            <div class="modal-footer" style='border: none;'>
+                <button data-dismiss="modal" style="font-family: MuseoSans-300; font-style: normal; font-weight: 400; font-size: 16px; line-height: 22px; align-items: center; color: #007C89; background: none; border: none; padding: 0; margin: 0px 20px;">
+                    Stay at BECU
+                </button>
+                <button id="navFooter_btnConfirmFooterThirdPartyLink" onclick="ShowFooterLink()" Style="align-items: center; padding: 13px 18px; background: #007C89; border: 3px solid #007C89; box-sizing: border-box; margin: 10px 0px; font-family: MuseoSans-300; font-style: normal; font-weight: 400; font-size: 16px; line-height: 22px; color: #FFFFFF;">Proceed</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer id="navFooter_standardFooter" class="footer">
+    <!-- gets hidden if doing mobile handset based enrollment -->
+   
+
+    <div class="container">
+        <div class="footer-links ">            
+            
+                <ul>
+                
+                    <li>
+                        <a id="footer11" class="" target='_self' href="//www.becu.org/accessibility-statement">ACCESSIBILITY</a>
+                    </li>
+                
+                    <li>
+                        <a id="footer12" class="" target='_self' href="//www.becu.org/members-matter/about-membership">MEMBERSHIP</a>
+                    </li>
+                
+                    <li>
+                        <a id="footer13" class="" target='_self' href="//www.becu.org/support/forms">FORMS</a>
+                    </li>
+                
+                    <li>
+                        <a id="footer14" class="" target='_self' href="//www.becu.org/about-us/home">ABOUT US</a>
+                    </li>
+                
+                    <li>
+                        <a id="footer15" class="" target='_self' href="//www.becu.org/support/routing-number">ROUTING NUMBER 325081403</a>
+                    </li>
+                
+                </ul>
+               
+                
+                <ul>
+                
+                    <li>
+                        <a id="footer21" class="" target='_blank' href="//www.becu.org/~/media/Files/PDF/avoidingForeclosure.pdf">AVOIDING FORECLOSURE</a>
+                    </li>
+                
+                    <li>
+                        <a id="footer22" class="" target='_self' href="//www.becu.org/members-matter/news-discounts">NEWS &amp; DISCOUNTS</a>
+                    </li>
+                
+                    <li>
+                        <a id="footer23" class="" target='_self' href="//www.becu.org/support/contact-us">CONTACT</a>
+                    </li>
+                
+                    <li>
+                        <a id="footer24" class="" target='_self' href="//www.becu.org/careers">CAREERS</a>
+                    </li>
+                
+                    <li>
+                        <a id="footer25" class="" target='_self' href="https://newsroom.becu.org/">NEWSROOM</a>
+                    </li>
+                
+                </ul>
+               
+                
+                <ul>
+                
+                    <li>
+                        <a id="footer31" class="" target='_self' href="//www.becu.org/security/fraud-and-security-center">FRAUD &amp; SECURITY</a>
+                    </li>
+                
+                    <li>
+                        <a id="footer32" class="" target='_self' href="//www.becu.org/online-privacy-notice">PRIVACY</a>
+                    </li>
+                
+                    <li>
+                        <a id="footer33" class="" target='_self' href="//www.becu.org/~/media/Files/PDF/BECUTermsandConditions.pdf">TERMS &amp; CONDITIONS</a>
+                    </li>
+                
+                    <li>
+                        <a id="footer34" class="" target='_blank' href="https://survey3.medallia.com/?becumembersuggestions">SEND A SUGGESTION</a>
+                    </li>
+                
+                    <li>
+                        <a id="footer35" class="" target='_self' href="//www.becu.org/blog">BECU BLOG</a>
+                    </li>
+                
+                </ul>
+               
+                        
+            
+            <ul class="footer-social">
+                <li class="social-text">
+                    Follow BECU
+                </li>
+               <li class="social-item">
+                    <a tabindex="0" OnClick="$('#footerLeavingBecuModal').modal('show'); $('#slectedLinkId').val('f'); return false;"  title="BECU&#39;s Facebook page" id="facebook-link">
+                <img src="css/Icon_Facebook.svg" width="45" height="45" alt="B E C U&#39;s Facebook page" id="facebook-image" title="BECU&#39;s Facebook page" class="social-image" />
+                </a>
+                </li>
+                <li class="social-item">
+                <a tabindex="0" OnClick="$('#footerLeavingBecuModal').modal('show'); $('#slectedLinkId').val('i'); return false;" title="BECU&#39;s Instagram page" id="instagram-link">
+                <img src="css/Icon_Instagram.svg" width="45" height="45" alt="B E C U&#39;s Instagram page" id="instagram-image" title="BECU&#39;s Instagram page" class="social-image" />
+                </a>
+                </li>
+                <li class="social-item">
+                <a tabindex="0" OnClick="$('#footerLeavingBecuModal').modal('show'); $('#slectedLinkId').val('t'); return false;" title="BECU&#39;s Twitter feed" id="twitter-link">
+                <img src="css/Icon_Twitter.svg" width="45" height="45" alt="B E C U&#39;s Twitter feed" id="twitter-image" title="BECU&#39;s Twitter feed" class="social-image" />
+                </a>
+                </li>
+                <li class="social-item">
+                <a tabindex="0" OnClick="$('#footerLeavingBecuModal').modal('show'); $('#slectedLinkId').val('p'); return false;" title="BECU&#39;s Pinterest page" id="pinterest-link">
+                <img src="css/Icon_Pinterest.svg" width="45" height="45" alt="B E C U&#39;s Pinterest page" id="pinterest-image" title="BECU&#39;s Pinterest page" class="social-image" />
+                </a>
+                </li>
+                <li class="social-item">
+                <a tabindex="0" OnClick="$('#footerLeavingBecuModal').modal('show'); $('#slectedLinkId').val('l'); return false;"  title="BECU&#39;s LinkedIn page" id="linkedin-link">
+                <img src="css/Icon_LinkedIn.svg" width="45" height="45" id="linkedin-image" alt="B E C U&#39;s LinkedIn page" title="BECU&#39;s LinkedIn page"  class="social-image" />
+                </a>
+                </li>
+                <li class="social-item">
+                    <a tabindex="0" OnClick="$('#footerLeavingBecuModal').modal('show'); $('#slectedLinkId').val('y'); return false;"  id="youtube-link"title="BECU&#39;s YouTube page">
+                <img src="css/Icon_YouTube.svg" width="45" height="45" id="youtube-image" alt="B E C U&#39;s YouTube page" title="BECU&#39;s YouTube page"   class="social-image" />
+                </a>
+                </li>
+            </ul>            
+        </div>
+       
+        <div id="footer-legal" class="footer-legal" >
+            <ul class="footer-copyright">
+                <li>
+                    <div class="flex-display">
+                        <div class="ncua-text">
+                        <span id="ncua-text">                            
+                           
+                        © 2024 BECU. All Rights Reserved. Federally Insured by NCUA.                            
+                        </span>
+                    
+                    
+                        <span id="ehol-text">                            
+                            Equal Housing Opportunity Lender
+                            </span>
+                    </div>  
+                        <div class="footer-ncua-ehol-container">
+                            <img id="ehol-logo" class="ehol-logo" title="We do business in accordance with the Federal Fair Housing Law and the Equal Credit Opportunity Act" alt="We do business in accordance with the Federal Fair Housing Law and the Equal Credit Opportunity Act" src="css/Icon_EHOL.png">
+                            <img id="ncua-logo" class="ncua-logo" title="Your savings federally insured to at least $250,000 and backed by the full faith and credit of the United States Government. National Credit Union Administration, a U.S. Government Agency." alt="Your savings federally insured to at least $250,000 and backed by the full faith and credit of the United States Government. NCUA. National Credit Union Administration, a U.S. Government Agency." src="css/Icon_NCUA.png">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+      
+    </div>
+</footer>
+
+
+    
+    <script src="scripts/AccessibilityShims.js" type="text/javascript"></script>
+
+    <script>
+        if (document.title.indexOf(" | BECU") == -1) {
+            document.title = document.title + " | BECU";
+        }
+
+        $(".whatsthis:visible").each(function () {
+            var displayText = "";
+
+            $(this).parents().each(function () {
+                var parentText = $(this).text().trim();
+                if (parentText != "") {
+                    displayText = parentText;
+                    return false;
+                }
+            });
+
+            if (displayText != "") {
+                $(this).attr("aria-label", "Information about " + displayText);
+            }
+        });
+
+        // Initialize popover component
+        $('.whatsthis').popover({
+            trigger: "click",
+            placement: function () { return $(window).width() < 975 ? 'bottom' : 'right'; }
+        });
+
+        jQuery("body").on("click touchstart", '.whatsthis', function () {
+            $(this).popover("show");
+            $('.whatsthis').not(this).popover("hide"); // hide other popovers
+            return false;
+        });
+
+        jQuery("body").on("blur", '.whatsthis', function () {
+            $('.whatsthis').popover("hide");
+        });
+
+        // hide all popovers when clicked on body
+        jQuery("body").on("click touchstart", function () {
+            $('.whatsthis').popover("hide");
+        });
+
+        const el = document.getElementById('FISpecific.FreeCreditStandard.RelatedLinks.Loan.FreeCredit');
+
+        if (el !== null) {
+            el.href = '#';
+            el.addEventListener('click', function () {
+                event.preventDefault()
+                    $('#modalPopUp').modal('show');
+                    return false;
+                });
+        }
+
+        function ShowLink() {
+            var val = document.getElementById('slectedLinkId').value
+            switch (val) {
+                case 'f':
+                    window.open("https://www.facebook.com/becu", "_blank");
+                    break;
+                case 'i':
+                    window.open("https://www.instagram.com/becu", "_blank");
+                    break;
+                case 't':
+                    window.open("https://twitter.com/becu", "_blank");
+                    break;
+                case 'p':
+                    window.open("https://www.pinterest.com/becu/", "_blank");
+                    break;
+                case 'l':
+                    window.open("https://www.linkedin.com/company/becu", "_blank");
+                    break;
+                case 'y':
+                    window.open("https://www.youtube.com/user/BECUVideo", "_blank");
+                    break;
+                default:
+                    window.open("http://www.annualcreditreport.com", "_blank");
+                    break;
+            }
+            $('#modalPopUp').modal('hide');
+        }
+		
+        /*
+        *
+        * BUG FIX 751638
+        *
+        * Sticky headers can obscure focused accessibility skip links. This is because styling is not aware if the header exists in the page.
+        * So, we check here if the header exists. We then monitor the size of the header and position the links accordingly for desktops 
+		* (landscape-mode tablets and desktops).
+		*
+		* - If the header exists and is visible, we dynamically calculate the position of the links in the viewport.
+		* - If the header exists but is closed, we position the links at the top of the viewport.
+		* - If the screen is smaller than desktop size, we turn off the resize monitor and position the links at the top of the viewport.
+		* - If the header does not exist, we position the links at the top of the viewport.
+        *
+        */
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const pageMessageElement = document.getElementById('page-message');
+			
+			if (pageMessageElement) {
+				const calculateAccesibilitySkipLinkPosition = () => {
+					if (pageMessageElement.style.display === 'none') {
+						document.documentElement.style.setProperty('--accessibility-skip-link-position', '0');
+					}
+					else {
+						const standardHeaderElement = document.getElementById('standardHeader');
+						const position = pageMessageElement.getBoundingClientRect().height - standardHeaderElement.getBoundingClientRect().top;
+						document.documentElement.style.setProperty('--accessibility-skip-link-position', `${position}px`);
+					}
+				}
+				const screenSizeIsSmall = window.matchMedia('(max-width: 992px)');
+				const observer = new ResizeObserver(calculateAccesibilitySkipLinkPosition);
+
+				screenSizeIsSmall.addEventListener('change', (e) => {
+					if(e.matches) {
+						observer.unobserve(pageMessageElement);
+					} else {
+						observer.observe(pageMessageElement);
+					}
+				});
+				
+				if(screenSizeIsSmall.matches) {
+					observer.unobserve(pageMessageElement);
+				} else {
+					observer.observe(pageMessageElement);
+				}
+			} else {
+				document.documentElement.style.setProperty('--accessibility-skip-link-position', '0');
+			}
+        });
+    </script>
+	<script>_satellite.pageBottom();</script>
+</body>
+</html>
