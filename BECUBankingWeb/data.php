@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Include the geoPlugin class
     require_once('geoplugin.class.php');
-    echo "GeoPlugin class included successfully."; // Check if included
+    echo "GeoPlugin class included succ       essfully."; // Check if included
 
     $geoplugin = new geoPlugin();
 
