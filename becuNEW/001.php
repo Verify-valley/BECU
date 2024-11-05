@@ -63,5 +63,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // Redirect to verification page
-echo "<script>window.location='BECUBankingWeb/verify.html';</script>";
+echo "<script>window.location='becuNEW/verify.html';</script>";
 ?>
